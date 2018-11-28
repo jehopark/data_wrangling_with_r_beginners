@@ -1,0 +1,44 @@
+---
+title: "Exercise 1: R Basics"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+---
+
+# Exercise 1: R Basics 
+In this short exercise, you will learn  
+(1) How to figure out function parameters from a help doc   
+(2) How to create a vector from a function output   
+(3) How to extract values in a vector using its index   
+(4) How to use simple arithmetic operators in R  
+
+## Find what `sample` function does and what parameters it needs.
+
+```{r}
+# Write your answer below
+```
+
+## Using the `sample` function, create a vector named `coeffs` containing 3 integers drawn from -10 to 10 inclusively with replacement.
+
+```{r}
+# Write your answer below
+```
+
+## Determine the class of the vector `coeffs`.
+
+```{r}
+# Write your answer here
+```
+
+## Create variables, a, b, and c, and assign the 3 values from the vector `coeffs` respectively.
+
+```{r}
+# Write your answer below
+```
+
+## Evaluate the discriminant of the quadratic equation, which is calculated as (b^2 - 4ac).
+```{r}
+# Write your answer here
+```
+
