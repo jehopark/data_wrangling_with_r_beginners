@@ -1,0 +1,57 @@
+---
+title: "Data Wrangling with R for Beginners Hands-on Part"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Hands-On Project - Reading the Data
+========================================================
+- Download the data to your computer at http://bit.ly/r-hands-on-s2018 (data only)
+- You can download all the files used in the workshop from the GitHub repo at http://bit.ly/QCL-GitHub-11282018
+- You can import the data to R either by code below or by clicking Import Dataset on the Environment Tab
+```{r}
+# You need to put the full path to the file in quotes or change the working directory [getwd(), setwd()]
+Births <- read.csv("Births2015.csv")
+Auto   <- read.csv("Auto.csv")
+```
+
+Hands-On Project - Analysis
+========================================================
+1. What is the name of the 1st car in the dataset, Auto?
+2. What is the total number of babies born in 2015?
+3. Make a boxplot of car mpg.
+4. Make a histogram of number of births.  
+5. How many babies are born on Wednesdays? (use pipe operator)
+6. Which date had the least amount of babies born?
+7. Is there a relationship between the number of cylinders and mpg? 
+8. Plot the average mpg for cars of each number of cylinders.
+
+(The next slide has the answers)
+
+Hands-On Project - Answers
+========================================================
+1. ```head(Auto$name,1)``` answer: chevrolet chevelle malibu
+2. ```sum(Births$births)``` answer: 3978497
+3. ```boxplot(Auto$mpg)``` 
+4. ```hist(Births$births)```
+5. ```Births %>% group_by(wday) %>% summarise(sum=sum(births)) %>% arrange(sum)``` answer: 638513
+6. ```Births %>% arrange(births) %>% head(3)``` (guess what date it was.. it's Christmas!)
+7. ```cor(Auto$mpg, Auto$cylinders)``` or ```plot(Auto$cylinders, Auto$mpg)```
+
+Hands-On Project - Answer #8
+========================================================
+```{r eval=FALSE}
+x <- Auto %>% group_by(cylinders) %>% summarise(mean(mpg))
+plot(x$cylinders, x$`mean(mpg)`)
+```
+
+Hands-On Project - Answer #8 - 2
+========================================================
+```{r eval=FALSE}
+plot(x$cylinders, x$`mean(mpg)`, type='o', xlab="Cylinders", ylab="Average MPG", main="Cylinders vs. Average MPG") # with plotting aestethic options
+```

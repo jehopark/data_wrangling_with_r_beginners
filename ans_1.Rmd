@@ -1,0 +1,43 @@
+---
+title: "Exercise 1"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+---
+
+# Use the `?` help operator to understand what the sample function does.
+
+```{r}
+# Write your answer here
+?sample
+```
+
+## Using the `sample` function, create a vector named `coeffs` containing 3 integers drawn from -10 to 10 inclusively with replacement.
+
+```{r}
+# Write your answer here
+coeffs <-sample(-10:10, 3, replace = TRUE)
+```
+
+# Determine the class of the vector `coeffs`.
+
+```{r}
+# Write your answer here
+class(coeffs)
+```
+
+## Create variables, a, b, and c, and assign the 3 values from the vector `coeffs` respectively.
+
+```{r}
+# Write your answer here
+a <- coeffs[1]
+b <- coeffs[2]
+c <- coeffs[3]
+```
+
+# Evaluate the discriminant of the quadratic equation, which is calculated as (b^2 - 4ac).
+```{r}
+# Write your answer here
+b^2 - 4*a*c
+```

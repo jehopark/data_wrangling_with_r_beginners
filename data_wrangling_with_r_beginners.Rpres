@@ -345,8 +345,8 @@ Hands-On Project - Pro Tips
 
 Hands-On Project - Reading the Data
 ========================================================
-- Download the data to your computer at http://bit.ly/r-hands-on-s2018
-- You can import the data to R either by code or by clicking Import Dataset on the Environment Tab
+- Download the data to your computer at http://bit.ly/r-hands-on-s2018 if you haven't downloaded them from the GitHub repo.
+- You can import the data to R either by code below or by clicking Import Dataset on the Environment Tab
 ```{r}
 # You need to put the full path to the file in quotes or change the working directory [getwd(), setwd()]
 Births <- read.csv("Births2015.csv")
@@ -364,6 +364,28 @@ Hands-On Project - Analysis
 7. Is there a relationship between the number of cylinders and mpg? 
 8. Plot the average mpg for cars of each number of cylinders.
 
+Hands-On Project - Answers
+========================================================
+1. ```head(Auto,1)```: chevrolet chevelle malibu
+2. ```sum(Births$births)```: 3978497
+3. ```boxplot(Auto$mpg)```
+4. ```hist(Births$births)```
+5. ```Births %>% group_by(wday) %>% summarise(sum=sum(births)) %>% arrange(sum)```: 638513
+6. ```Births %>% arrange(births) %>% head(3)```: (guess what date it was)
+7. ```cor(Auto$mpg, Auto$cylinders)``` or ```plot(Auto$cylinders, Auto$mpg)```
+
+Hands-On Project - Answer #8
+========================================================
+```{r eval=FALSE}
+x <- Auto %>% group_by(cylinders) %>% summarise(mean(mpg))
+plot(x$cylinders, x$`mean(mpg)`)
+```
+
+Hands-On Project - Answer #8 - 2
+========================================================
+```{r eval=FALSE}
+plot(x$cylinders, x$`mean(mpg)`, type='o', xlab="Cylinders", ylab="Average MPG", main="Cylinders vs. Average MPG") # Cleaner Version
+```
 
 [FREE!] resources for your further study
 ========================================================
